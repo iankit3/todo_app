@@ -1,0 +1,6 @@
+[package]
+name = "todo_app"
+version = "0.1.0"
+authors = ["iankit3 <a4ankit@outlook.com>"]
+
+[dependencies]
