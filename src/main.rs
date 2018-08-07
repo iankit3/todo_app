@@ -12,14 +12,36 @@ struct Task<'a>{
     due_date : &'a str 
 }
 
+
 fn main() {    
+    let tasks_list : Vec<Task> = Vec::new();
     let todo : Task;
     todo = Task { 
         task_name : "Create a todo console app in rust" ,
         is_done : false ,
         due_date : "15th August" 
     };
-    println!("{:?}",todo);
+
+    add_task(tasks_list,todo);
+    /*
+        print_tasks(tasks_list);
+   |                 ^^^^^^^^^^ value used here after move
+     */
+    //print_tasks(tasks_list);
 }
+
+fn add_task<'a>(mut tasks_list : Vec<Task<'a>> , todo : Task<'a>) /*-> Vec<Task<'a>>*/{
+    &tasks_list.push(todo);
+    print_tasks(tasks_list);
+    //tasks_list
+}
+
+fn print_tasks(tasks_list : Vec<Task>){
+    for task in tasks_list  {
+        println!("{:?}", task);
+    }
+}
+
+
 
 
