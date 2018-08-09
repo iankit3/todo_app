@@ -6,7 +6,7 @@
 
 // Learn't about Lifetime  : missing lifetime specifier - expected identifier
 #[derive(Debug)]
-struct Task<'a>{
+pub struct Task<'a>{
     task_name : &'a str,
     is_done : bool,
     due_date : &'a str 
