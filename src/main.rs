@@ -28,16 +28,11 @@ fn main() {
                     is_done : false , 
                     due_date : "17th August" 
                 });
-    /*
-        print_tasks(tasks_list);
-   |                 ^^^^^^^^^^ value used here after move
-     */
     print_tasks(tasks_list);
 }
 
-fn add_task<'a>(tasks_list : &mut Vec<Task<'a>>, todo : Task<'a>) /*-> Vec<Task<'a>>*/{
+fn add_task<'a>(tasks_list : &mut Vec<Task<'a>>, todo : Task<'a>){
     tasks_list.push(todo);
-    //&tasks_list
 }
 
 fn print_tasks(tasks_list : Vec<Task>){
