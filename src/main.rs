@@ -6,6 +6,7 @@
 
 // Learn't about Lifetime  : missing lifetime specifier - expected identifier
 #[derive(Debug)]
+#[derive(Copy,Clone)]
 pub struct Task<'a>{
     task_name : &'a str,
     is_done : bool,
@@ -14,6 +15,7 @@ pub struct Task<'a>{
 
 
 fn main() {    
+    #[derive(Copy,Clone)]
     let tasks_list : Vec<Task> = Vec::new();
     let todo : Task;
     todo = Task { 
@@ -27,13 +29,12 @@ fn main() {
         print_tasks(tasks_list);
    |                 ^^^^^^^^^^ value used here after move
      */
-    //print_tasks(tasks_list);
+    print_tasks(tasks_list);
 }
 
-fn add_task<'a>(mut tasks_list : Vec<Task<'a>> , todo : Task<'a>) /*-> Vec<Task<'a>>*/{
-    &tasks_list.push(todo);
-    print_tasks(tasks_list);
-    //tasks_list
+fn add_task<'a>(mut tasks_list : Vec<Task<'a>> , todo : Task<'a>) -> Vec<Task<'a>>{
+    tasks_list.push(todo);
+    tasks_list
 }
 
 fn print_tasks(tasks_list : Vec<Task>){
