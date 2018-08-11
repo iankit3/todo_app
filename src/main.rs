@@ -4,12 +4,22 @@
     -- scanf    
 */
 
+pub trait Print {
+    fn pretty_print(&self) -> ();
+}
+
 // Learn't about Lifetime  : missing lifetime specifier - expected identifier
 #[derive(Debug)]
 pub struct Task<'a>{
     task_name : &'a str,
     is_done : bool,
     due_date : &'a str 
+}
+
+impl<'a> Print for Task<'a>{
+    fn pretty_print(&self) -> (){
+        println!("Task Name : {} ,with status {} and a due date of {}",&self.task_name , &self.is_done , &self.due_date)
+    }
 }
 
 
@@ -37,7 +47,7 @@ fn add_task<'a>(tasks_list : &mut Vec<Task<'a>>, todo : Task<'a>){
 
 fn print_tasks(tasks_list : Vec<Task>){
     for task in tasks_list  {
-        println!("{:?}", task);
+        task.pretty_print();
     }
 }
 
