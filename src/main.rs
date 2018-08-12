@@ -9,11 +9,21 @@ pub trait Print {
 }
 
 // Learn't about Lifetime  : missing lifetime specifier - expected identifier
-#[derive(Debug)]
+#[derive(Debug,Copy,Clone)]
 pub struct Task<'a>{
     task_name : &'a str,
     is_done : bool,
     due_date : &'a str 
+}
+
+impl<'a> PartialEq<Task<'a>> for Task<'a>{
+    fn eq(&self, other: &Task) -> bool{
+        self.task_name == other.task_name
+    }
+
+    fn ne(&self, other: &Task) -> bool {  
+        self.task_name != other.task_name
+    }
 }
 
 impl<'a> Print for Task<'a>{
@@ -25,6 +35,7 @@ impl<'a> Print for Task<'a>{
 
 fn main() {    
     let mut tasks_list : Vec<Task> = Vec::new();
+    
     let todo : Task;
     todo = Task { 
         task_name : "Create a todo console app in rust" ,
@@ -38,11 +49,18 @@ fn main() {
                     is_done : false , 
                     due_date : "17th August" 
                 });
+    remove_task(&mut tasks_list, todo);
     print_tasks(tasks_list);
 }
 
 fn add_task<'a>(tasks_list : &mut Vec<Task<'a>>, todo : Task<'a>){
     tasks_list.push(todo);
+}
+
+fn remove_task<'a>(tasks_list : &mut Vec<Task<'a>> , todo : Task<'a>){
+   let index = tasks_list.iter().position(|&td| td.task_name == todo.task_name).unwrap();
+    println!("{}",index);
+    tasks_list.remove(index);
 }
 
 fn print_tasks(tasks_list : Vec<Task>){
