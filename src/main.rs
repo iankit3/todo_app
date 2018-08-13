@@ -3,13 +3,15 @@
     -- imports 
     -- scanf    
 */
+use std::cmp::Ordering;
 
 pub trait Print {
     fn pretty_print(&self) -> ();
 }
 
+
 // Learn't about Lifetime  : missing lifetime specifier - expected identifier
-#[derive(Debug,Copy,Clone)]
+#[derive(Debug,Copy,Clone,Eq)]
 pub struct Task<'a>{
     task_name : &'a str,
     is_done : bool,
@@ -31,7 +33,6 @@ impl<'a> Print for Task<'a>{
         println!("Task Name : {} ,with status {} and a due date of {}",&self.task_name , &self.is_done , &self.due_date)
     }
 }
-
 
 fn main() {    
     let mut tasks_list : Vec<Task> = Vec::new();
@@ -55,6 +56,10 @@ fn main() {
 
 fn add_task<'a>(tasks_list : &mut Vec<Task<'a>>, todo : Task<'a>){
     tasks_list.push(todo);
+}
+
+fn sort_task(task_list : Vec<Task>){
+    //implement sort 
 }
 
 fn remove_task<'a>(tasks_list : &mut Vec<Task<'a>> , todo : Task<'a>){
