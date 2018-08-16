@@ -62,6 +62,10 @@ fn sort_task(task_list : Vec<Task>){
     //implement sort 
 }
 
+fn filter_task(task_list : Vec<Task>){
+    //implement filter
+}
+
 fn remove_task<'a>(tasks_list : &mut Vec<Task<'a>> , todo : Task<'a>){
    let index = tasks_list.iter().position(|&td| td.task_name == todo.task_name).unwrap();
     println!("A Task at {} has been removed from the task_list",index);
