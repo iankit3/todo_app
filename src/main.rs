@@ -59,11 +59,13 @@ fn add_task<'a>(tasks_list : &mut Vec<Task<'a>>, todo : Task<'a>){
 }
 
 fn sort_task(task_list : Vec<Task>){
-    //implement sort 
+    //implement sort
+    unimplemented() 
 }
 
 fn filter_task(task_list : Vec<Task>){
     //implement filter
+    unimplemented()
 }
 
 fn delete_task(task_list : Vec<Task>){
