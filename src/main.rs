@@ -73,6 +73,10 @@ fn delete_task(task_list : Vec<Task>){
    unimplemented!();
 }
 
+fn mark_all_tasks_done(tasks_list : &mut Vec<Task>){
+    task_list = tasks_list.iter().map(|task| task.is_done == true).collect();
+}
+
 fn remove_task<'a>(tasks_list : &mut Vec<Task<'a>> , todo : Task<'a>){
    let index = tasks_list.iter().position(|&td| td.task_name == todo.task_name).unwrap();
     println!("A Task at {} has been removed from the task_list",index);
