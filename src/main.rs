@@ -66,7 +66,11 @@ fn sort_task(task_list : &mut Vec<Task>){
 fn filter_task(task_list : Vec<Task>){
     //implement filter
     unimplemented!();
-    task_list.iter().filter(|x| x.is_done == true);
+    task_list = task_list
+                .iter()
+                .filter(|x| x.is_done == true)
+                .enumerate()
+                .collect();
 }
 
 fn delete_task(task_list : Vec<Task>){
@@ -74,7 +78,7 @@ fn delete_task(task_list : Vec<Task>){
 }
 
 fn mark_all_tasks_done(tasks_list : &mut Vec<Task>){
-    task_list = tasks_list.iter().map(|task| task.is_done == true).collect();
+    tasks_list = tasks_list.iter().map(|task| task.is_done = true).enumerate().collect();
 }
 
 fn remove_task<'a>(tasks_list : &mut Vec<Task<'a>> , todo : Task<'a>){
