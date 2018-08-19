@@ -69,7 +69,6 @@ fn filter_task(task_list : Vec<Task>){
     task_list = task_list
                 .iter()
                 .filter(|x| x.is_done == true)
-                .enumerate()
                 .collect();
 }
 
@@ -78,7 +77,7 @@ fn delete_task(task_list : Vec<Task>){
 }
 
 fn mark_all_tasks_done(tasks_list : &mut Vec<Task>){
-    tasks_list = tasks_list.iter().map(|task| task.is_done = true).enumerate().collect();
+    tasks_list = tasks_list.iter().map(|task| task.is_done = true).collect();
 }
 
 fn remove_task<'a>(tasks_list : &mut Vec<Task<'a>> , todo : Task<'a>){
