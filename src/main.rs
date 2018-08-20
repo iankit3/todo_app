@@ -1,16 +1,9 @@
-/*  - Things i don't know or learn't after completing this app
-    -- Complex data types (struct , class );
-    -- imports 
-    -- scanf    
-*/
 use std::cmp::Ordering;
 
 pub trait Print {
     fn pretty_print(&self) -> ();
 }
 
-
-// Learn't about Lifetime  : missing lifetime specifier - expected identifier
 #[derive(Debug,Copy,Clone,Eq)]
 pub struct Task<'a>{
     task_name : &'a str,
