@@ -1,3 +1,16 @@
+//#RUST GOALS
+// - Prevent simultaneous mutation and aliasing(ref) :: it uses concepts like Ownership/Borrowing
+//ex - c++
+/*
+    void example() {
+        vector<string> vector;
+        //..
+        auto& elem = vector[0];
+        vector.push_back(some_str);
+        cout << elem;
+    }
+*/
+
 use std::cmp::Ordering;
 
 pub trait Print {
